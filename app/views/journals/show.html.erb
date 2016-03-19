@@ -1,4 +1,4 @@
-<%- model_class = DayEntry -%>
+<%- model_class = Journal -%>
 
 <div class="page-header">
   <h2><%= Date.today.strftime("%B") %> Entries</h2>
@@ -7,14 +7,14 @@
 
 <%= month_calendar do |date| %>
   <%= date.day %> <br />
-  <% if DayEntry.today(date) %>
-    <%= link_to "✅ Day", day_entry_path(DayEntry.today(date)) %>
+  <% if DayEntry.this_day(date) %>
+    <%= link_to "✅ Day", day_entry_path(DayEntry.this_day(date)) %>
   <% else %>
     <%= link_to "Add day", new_day_entry_date_path(date) %>
   <% end %>
   <br />
-  <% if NightEntry.today(date) %>
-    <%= link_to "✅ Night", night_entry_path(NightEntry.today(date)) %>
+  <% if NightEntry.this_day(date) %>
+    <%= link_to "✅ Night", night_entry_path(NightEntry.this_day(date)) %>
   <% else %>
     <%= link_to "Add night", new_night_entry_date_path(date) %>
   <% end %>
