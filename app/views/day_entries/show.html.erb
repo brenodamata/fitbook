@@ -1,0 +1,29 @@
+<%- model_class = DayEntry -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:entry_date) %>:</strong></dt>
+  <dd><%= @day_entry.entry_date %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:weight) %>:</strong></dt>
+  <dd><%= @day_entry.weight %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:bodyfat) %>:</strong></dt>
+  <dd><%= @day_entry.bodyfat %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:bmi) %>:</strong></dt>
+  <dd><%= @day_entry.bmi %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:minutes_of_sleep) %>:</strong></dt>
+  <dd><%= @day_entry.minutes_of_sleep %></dd>
+</dl>
+
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              day_entries_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_day_entry_path(@day_entry), :class => 'btn btn-primary' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              day_entry_path(@day_entry),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>

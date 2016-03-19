@@ -1,0 +1,42 @@
+<%- model_class = NightEntry -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:weight) %></th>
+      <th><%= model_class.human_attribute_name(:bodyfat) %></th>
+      <th><%= model_class.human_attribute_name(:bmi) %></th>
+      <th><%= model_class.human_attribute_name(:calories_burned) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @night_entries.each do |night_entry| %>
+      <tr>
+        <td><%= link_to night_entry.id, night_entry_path(night_entry) %></td>
+        <td><%= night_entry.weight %></td>
+        <td><%= night_entry.bodyfat %></td>
+        <td><%= night_entry.bmi %></td>
+        <td><%= night_entry.calories_burned %></td>
+        <td><%=l night_entry.created_at %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_night_entry_path(night_entry), :class => 'btn btn-primary btn-xs' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      night_entry_path(night_entry),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-danger btn-xs' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_night_entry_path,
+            :class => 'btn btn-primary' %>
