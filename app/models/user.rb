@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_one :journal
+  has_many :supplement_usages
+  has_many :supplements, through: :supplement_usages
 
   # Gender ISO https://en.wikipedia.org/wiki/ISO/IEC_5218
 
