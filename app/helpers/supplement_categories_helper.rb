@@ -1,0 +1,2 @@
+module SupplementCategoriesHelper
+end

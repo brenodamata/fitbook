@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  resources :supplement_sub_categories
+  resources :supplement_categories
+
   devise_for :users
   resources :users, only: [:show, :edit, :update]
 
