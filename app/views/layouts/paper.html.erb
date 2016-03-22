@@ -32,20 +32,19 @@
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li class="active"><a href="#">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#about">Program</a></li>
+            <li><a href="#contact">Suplements</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Journal <b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li><%= link_to "#{Date.today.strftime("%B")} Entries", journal_path %></li>
+                <li class="divider"></li>
               <% if DayEntry.today.nil? %>
                 <li><%= link_to "Add day entry", new_day_entry_path %></li>
               <% else %>
                 <li><%= link_to "View day entry", day_entry_path(DayEntry.today) %></li>
                 <li><%= link_to "Edit day entry", edit_day_entry_path(DayEntry.today) %></li>
               <% end %>
-                <li class="divider"></li>
-                <li class="dropdown-header">Nav header</li>
               <% if NightEntry.today.nil? %>
                 <li><%= link_to "Add night entry", new_night_entry_path %></li>
               <% else %>
