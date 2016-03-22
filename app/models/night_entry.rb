@@ -1,15 +1,19 @@
 class NightEntry < ActiveRecord::Base
-  def self.entries_this_month
+  belongs_to :journal
+  validates :journal_id, presence: true
+
+  def self.entries_this_month user
     # DayEntry.where("extract(month from created_at) = ?", Date.today.month) SQL
-    NightEntry.where("strftime('%Y%m', created_at) = ?", Date.today.strftime('%Y%m'))
+    user.journal.night_entries.where("strftime('%Y%m', created_at) = ?", Date.today.strftime('%Y%m'))
   end
 
-  def self.this_day(date)
+  def self.this_day(date, user)
     # DayEntry.where("strftime('%Y%m%d', created_at) = ?", date.strftime('%Y%m%d'))
-    NightEntry.where(entry_date: date).first
+    user.journal.night_entries.where(entry_date: date).first
   end
 
-  def self.today
-    NightEntry.where(entry_date: Date.today).first
+  def self.today user
+    user.journal.night_entries.where(entry_date: Date.today).first
   end
+
 end

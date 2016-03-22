@@ -11,14 +11,14 @@
 
 <%= month_calendar do |date| %>
   <%= date.day %> <br />
-  <% if DayEntry.this_day(date) %>
-    <%= link_to "✅ Day", day_entry_path(DayEntry.this_day(date)) %>
+  <% if current_user.this_day_entry(date) %>
+    <%= link_to "✅ Day", day_entry_path(current_user.this_day_entry(date)) %>
   <% else %>
     <%= link_to "Add day", new_day_entry_date_path(date) %>
   <% end %>
   <br />
-  <% if NightEntry.this_day(date) %>
-    <%= link_to "✅ Night", night_entry_path(NightEntry.this_day(date)) %>
+  <% if current_user.this_night_entry(date) %>
+    <%= link_to "✅ Night", night_entry_path(current_user.this_night_entry(date)) %>
   <% else %>
     <%= link_to "Add night", new_night_entry_date_path(date) %>
   <% end %>

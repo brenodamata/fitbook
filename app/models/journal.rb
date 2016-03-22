@@ -1,4 +1,7 @@
 class Journal < ActiveRecord::Base
+  belongs_to :user
+  has_many :day_entries
+  has_many :night_entries
 
   def set_day_entry day_entry_id
     current_day_entry_id = day_entry_id if DayEntry.find(day_entry_id).entry_date == Date.today

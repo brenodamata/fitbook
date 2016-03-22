@@ -41,17 +41,15 @@
               <ul class="dropdown-menu">
                 <li><%= link_to "#{Date.today.strftime("%B")} Entries", journal_path %></li>
                 <li class="divider"></li>
-              <% if DayEntry.today.nil? %>
+              <% if current_user.today_entry.nil? %>
                 <li><%= link_to "Add day entry", new_day_entry_path %></li>
               <% else %>
-                <li><%= link_to "View day entry", day_entry_path(DayEntry.today) %></li>
-                <li><%= link_to "Edit day entry", edit_day_entry_path(DayEntry.today) %></li>
+                <li><%= link_to "View day entry", day_entry_path(current_user.today_entry) %></li>
               <% end %>
-              <% if NightEntry.today.nil? %>
+              <% if current_user.tonight_entry.nil? %>
                 <li><%= link_to "Add night entry", new_night_entry_path %></li>
               <% else %>
-                <li><%= link_to "View night entry", night_entry_path(NightEntry.today) %></li>
-                <li><%= link_to "Edit night entry", edit_night_entry_path(NightEntry.today) %></li>
+                <li><%= link_to "View night entry", night_entry_path(current_user.tonight_entry) %></li>
               <% end %>
               </ul>
             </li>

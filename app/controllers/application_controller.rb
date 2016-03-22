@@ -8,6 +8,6 @@ class ApplicationController < ActionController::Base
 
   # Uncomnet this method and the before action if there is no journal entry in the DB
   def get_journal
-    Journal.first_or_create
+    current_user.get_journal
   end
 end

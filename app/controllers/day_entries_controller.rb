@@ -2,7 +2,7 @@ class DayEntriesController < ApplicationController
   before_action :set_day_entry, only: [:show, :edit, :update, :destroy]
 
   def index
-    @day_entries = DayEntry.all
+    @day_entries = current_user.journal.day_entries
   end
 
   def show
@@ -59,6 +59,6 @@ class DayEntriesController < ApplicationController
     end
 
     def day_entry_params
-      params.require(:day_entry).permit(:weight, :bodyfat, :bmi, :minutes_of_sleep, :entry_date)
+      params.require(:day_entry).permit(:weight, :bodyfat, :bmi, :minutes_of_sleep, :entry_date, :journal_id)
     end
 end

@@ -2,7 +2,7 @@ class NightEntriesController < ApplicationController
   before_action :set_night_entry, only: [:show, :edit, :update, :destroy]
 
   def index
-    @night_entries = NightEntry.all
+    @night_entries = current_user.journal.night_entries
   end
 
   def show
@@ -59,6 +59,6 @@ class NightEntriesController < ApplicationController
     end
 
     def night_entry_params
-      params.require(:night_entry).permit(:weight, :bodyfat, :bmi, :calories_burned, :entry_date)
+      params.require(:night_entry).permit(:weight, :bodyfat, :bmi, :calories_burned, :entry_date, :journal_id)
     end
 end

@@ -1,6 +1,7 @@
 <%= form_for @day_entry do |f| %>
   <div class="form-group">
     <%= f.hidden_field :entry_date, value: @day_entry.entry_date %>
+    <%= f.hidden_field :journal_id, value: current_user.get_journal.id %>
   </div>
   <div class="form-group">
     <%= f.label :weight, :class => 'control-label' %>
