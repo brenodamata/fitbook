@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   resources :night_entries
   get '/night_entries/new/:date', to: "night_entries#new", as: 'new_night_entry_date'
   resources :day_entries

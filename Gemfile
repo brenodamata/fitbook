@@ -15,6 +15,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'twitter-bootswatch-rails', '~> 3.3.4' # twitter bootstrap css & javascript toolkit
 gem 'twitter-bootswatch-rails-helpers' # twitter bootstrap helpers gem, e.g., alerts etc...
 gem "simple_calendar", "~> 2.0"
+gem 'devise'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
