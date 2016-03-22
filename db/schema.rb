@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160322215819) do
+ActiveRecord::Schema.define(version: 20160322223012) do
 
   create_table "day_entries", force: :cascade do |t|
     t.float    "weight"
@@ -70,6 +70,19 @@ ActiveRecord::Schema.define(version: 20160322215819) do
   end
 
   add_index "supplement_sub_categories", ["supplement_category_id"], name: "index_supplement_sub_categories_on_supplement_category_id"
+
+  create_table "supplements", force: :cascade do |t|
+    t.string   "name"
+    t.string   "brand"
+    t.integer  "supplement_category_id"
+    t.integer  "supplement_sub_category_id"
+    t.integer  "servings"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "supplements", ["supplement_category_id"], name: "index_supplements_on_supplement_category_id"
+  add_index "supplements", ["supplement_sub_category_id"], name: "index_supplements_on_supplement_sub_category_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

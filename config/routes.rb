@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :supplements
   resources :supplement_sub_categories
   resources :supplement_categories
 

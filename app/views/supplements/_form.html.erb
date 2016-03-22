@@ -1,0 +1,28 @@
+<%= form_for @supplement do |f| %>
+  <div class="form-group">
+    <%= f.label :name, :class => 'control-label' %>
+    <%= f.text_field :name, :class => 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :brand, :class => 'control-label' %>
+    <%= f.text_field :brand, :class => 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :supplement_category_id, :class => 'control-label' %>
+    <%= f.number_field :supplement_category_id, :class => 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :supplement_sub_category_id, :class => 'control-label' %>
+    <%= f.number_field :supplement_sub_category_id, :class => 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :servings, :class => 'control-label' %>
+    <%= f.number_field :servings, :class => 'form-control' %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                supplements_path, :class => 'btn' %>
+  </div>
+<% end %>
