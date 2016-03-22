@@ -31,7 +31,9 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
+          <% if user_signed_in? %>
+            <li class="active"><%= link_to "Home", user_path(current_user) %></li>
+          <% end %>
             <li><a href="#about">Program</a></li>
             <li><a href="#contact">Suplements</a></li>
             <li class="dropdown">

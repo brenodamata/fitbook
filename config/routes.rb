@@ -1,9 +1,14 @@
 Rails.application.routes.draw do
+
   devise_for :users
+  resources :users, only: [:show, :edit, :update]
+
   resources :night_entries
   get '/night_entries/new/:date', to: "night_entries#new", as: 'new_night_entry_date'
+
   resources :day_entries
   get '/day_entries/new/:date', to: "day_entries#new", as: 'new_day_entry_date'
+
   get 'journal', to: "journals#show"
 
   # get 'home/index'
