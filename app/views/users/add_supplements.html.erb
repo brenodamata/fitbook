@@ -1,0 +1,9 @@
+<div class="page-header">
+  <h3>Add a new supplement to your stack!</h3>
+</div>
+
+<%= render 'supplements' %>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_supplement_path,
+            :class => 'btn btn-primary' %>

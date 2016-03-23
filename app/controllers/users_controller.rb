@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user
+  before_action :set_user#, except: [:supplements, :add_supplements]
 
   def show
   end
@@ -19,9 +19,22 @@ class UsersController < ApplicationController
     end
   end
 
+  def supplements
+    @user = User.find(params[:user_id])
+    @supplements = @user.supplements
+  end
+
+  def add_supplements
+    @supplements = Supplement.all
+  end
+
   private
     def set_user
-      @user = User.find(params[:id])
+      if params[:user_id]
+        @user = User.find(params[:user_id])
+      else
+        @user = User.find(params[:id])
+      end
     end
 
     def user_params

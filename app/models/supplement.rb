@@ -4,4 +4,8 @@ class Supplement < ActiveRecord::Base
 
   has_many :supplement_usages
   has_many :users, through: :supplement_usages
+
+  validates_presence_of :brand
+  validates_presence_of :name
+  validates_uniqueness_of :name
 end

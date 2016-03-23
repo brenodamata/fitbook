@@ -5,7 +5,15 @@ Rails.application.routes.draw do
   resources :supplement_categories
 
   devise_for :users
-  resources :users, only: [:show, :edit, :update]
+  resources :users, only: [:show, :edit, :update] do
+    get 'supplements'
+    get 'supplements/new', to: 'users#add_supplements', as: 'new_supplements'
+    # post 'supplements', supplements#create
+    # get 'supplements'
+    # POST   /supplements(.:format)
+              # new_supplement GET    /supplements/new(.:format)                    supplements#new
+    # DELETE /supplements/:id(.:format)                    supplements#destroy
+  end
 
   resources :night_entries
   get '/night_entries/new/:date', to: "night_entries#new", as: 'new_night_entry_date'

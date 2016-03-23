@@ -1,0 +1,27 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Brand</th>
+      <th>Category</th>
+      <th>Sub-category</th>
+      <th>Servings</th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @supplements.each do |supplement| %>
+      <tr>
+        <td><%= link_to supplement.name, supplement_path(supplement) %></td>
+        <td><%= supplement.brand %></td>
+        <td><%= link_to supplement.supplement_category.name, supplement_category_path(supplement.supplement_category) %></td>
+        <td><%= link_to supplement.supplement_sub_category.name, supplement_sub_category_path(supplement.supplement_sub_category) %></td>
+        <td><%= supplement.servings %></td>
+        <td>
+          <%= link_to 'Add to stack',
+                      edit_supplement_path(supplement), :class => 'btn btn-primary btn-xs' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
