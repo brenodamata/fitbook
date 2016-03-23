@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160322223413) do
+ActiveRecord::Schema.define(version: 20160323205530) do
 
   create_table "day_entries", force: :cascade do |t|
     t.float    "weight"
@@ -76,8 +76,9 @@ ActiveRecord::Schema.define(version: 20160322223413) do
     t.integer  "supplement_id"
     t.date     "start_date"
     t.date     "finsh_date"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.integer  "remaining_servings"
   end
 
   add_index "supplement_usages", ["supplement_id"], name: "index_supplement_usages_on_supplement_id"
