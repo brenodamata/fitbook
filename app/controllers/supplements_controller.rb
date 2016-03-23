@@ -1,28 +1,20 @@
 class SupplementsController < ApplicationController
   before_action :set_supplement, only: [:show, :edit, :update, :destroy]
 
-  # GET /supplements
-  # GET /supplements.json
   def index
     @supplements = Supplement.all
   end
 
-  # GET /supplements/1
-  # GET /supplements/1.json
   def show
   end
 
-  # GET /supplements/new
   def new
     @supplement = Supplement.new
   end
 
-  # GET /supplements/1/edit
   def edit
   end
 
-  # POST /supplements
-  # POST /supplements.json
   def create
     @supplement = Supplement.new(supplement_params)
 
@@ -37,8 +29,6 @@ class SupplementsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /supplements/1
-  # PATCH/PUT /supplements/1.json
   def update
     respond_to do |format|
       if @supplement.update(supplement_params)
@@ -51,8 +41,6 @@ class SupplementsController < ApplicationController
     end
   end
 
-  # DELETE /supplements/1
-  # DELETE /supplements/1.json
   def destroy
     @supplement.destroy
     respond_to do |format|
@@ -62,12 +50,10 @@ class SupplementsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_supplement
       @supplement = Supplement.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def supplement_params
       params.require(:supplement).permit(:name, :brand, :supplement_category_id, :supplement_sub_category_id, :servings)
     end

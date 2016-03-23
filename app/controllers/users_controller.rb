@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user#, except: [:supplements, :add_supplements]
+  before_action :set_user, except: [:add_supplement_to_stack]
 
   def show
   end
@@ -21,11 +21,25 @@ class UsersController < ApplicationController
 
   def supplements
     @user = User.find(params[:user_id])
-    @supplements = @user.supplements
+    @supplements = @user.supplement_usages
   end
 
   def add_supplements
     @supplements = Supplement.all
+  end
+
+  def add_supplement_to_stack
+    @supplement = Supplement.find(params[:supplement_id])
+    @stack = SupplementUsage.new(user: current_user, supplement: @supplement, start_date: Date.today)
+
+    respond_to do |format|
+      if @stack.save
+        format.html { redirect_to user_supplements_path(current_user), notice: 'Supplement added to your stack!' }
+      else
+        format.html { redirect_to user_new_supplements_path(current_user), notice: 'could not save' }
+        format.json { render json: @stack.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   private

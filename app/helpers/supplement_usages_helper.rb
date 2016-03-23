@@ -1,0 +1,2 @@
+module SupplementUsagesHelper
+end

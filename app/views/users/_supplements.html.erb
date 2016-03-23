@@ -18,8 +18,7 @@
         <td><%= link_to supplement.supplement_sub_category.name, supplement_sub_category_path(supplement.supplement_sub_category) %></td>
         <td><%= supplement.servings %></td>
         <td>
-          <%= link_to 'Add to stack',
-                      edit_supplement_path(supplement), :class => 'btn btn-primary btn-xs' %>
+          <%= link_to 'Add to stack', supplement_add_stack_path(supplement), :class => 'btn btn-primary btn-xs' %>
         </td>
       </tr>
     <% end %>

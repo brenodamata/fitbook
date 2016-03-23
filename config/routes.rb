@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
 
-  resources :supplements
+  get 'supplement_usages/new'
+  get 'supplement_usages/create'
+
+  resources :supplements do
+    get 'add_stack', to: 'users#add_supplement_to_stack'
+  end
   resources :supplement_sub_categories
   resources :supplement_categories
 
@@ -8,6 +13,10 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :edit, :update] do
     get 'supplements'
     get 'supplements/new', to: 'users#add_supplements', as: 'new_supplements'
+
+    # get 'supplement_usages/:supplement_id/new', to: 'supplement_usages#new'
+    # post 'supplement_usages', to: 'supplement_usages#create'
+
     # post 'supplements', supplements#create
     # get 'supplements'
     # POST   /supplements(.:format)
