@@ -7,9 +7,8 @@
     <tr>
       <th><%= model_class.human_attribute_name(:name) %></th>
       <th><%= model_class.human_attribute_name(:brand) %></th>
-      <th><%= model_class.human_attribute_name(:supplement_category_id) %></th>
       <th><%= model_class.human_attribute_name(:supplement_sub_category_id) %></th>
-      <th><%= model_class.human_attribute_name(:servings) %></th>
+      <th><%= model_class.human_attribute_name(:remaining_servings) %></th>
       <th><%= model_class.human_attribute_name(:start_date) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
@@ -19,14 +18,14 @@
       <tr>
         <td><%= link_to stack.supplement.name, supplement_path(stack.supplement) %></td>
         <td><%= stack.supplement.brand %></td>
-        <td><%= stack.supplement.supplement_category.name %></td>
         <td><%= stack.supplement.supplement_sub_category.name %></td>
         <td><%= stack.remaining_servings %></td>
         <td><%=l stack.start_date %></td>
         <td>
-          <%#= link_to t('.edit', :default => t("helpers.links.edit")),
+        <!-- TODO -->
+          <%= link_to 'Add',
                       edit_supplement_path(stack.supplement), :class => 'btn btn-primary btn-xs' %>
-          <%#= link_to t('.destroy', :default => t("helpers.links.destroy")),
+          <%= link_to 'Done',
                       supplement_path(stack.supplement),
                       :method => :delete,
                       :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },

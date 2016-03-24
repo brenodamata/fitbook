@@ -1,14 +1,10 @@
 class SupplementUsage < ActiveRecord::Base
   belongs_to :user
   belongs_to :supplement
-  before_create :servings
+  before_create :set_servings
 
 private
-  def servings
-    if supplement.servings
-      byebug
-      self.remaining_servings = supplement.servings
-      # finish_date = servings
-    end
+  def set_servings
+    self.remaining_servings = supplement.servings if supplement.servings
   end
 end
