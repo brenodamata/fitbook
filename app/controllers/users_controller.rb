@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, except: [:add_supplement_to_stack]
+  before_action :set_user, only: [:show, :edit, :update, :supplements, :add_supplements]
 
   def show
   end
