@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160323205530) do
+ActiveRecord::Schema.define(version: 20160404195256) do
 
   create_table "day_entries", force: :cascade do |t|
     t.float    "weight"
@@ -48,6 +48,24 @@ ActiveRecord::Schema.define(version: 20160323205530) do
   end
 
   add_index "night_entries", ["journal_id"], name: "index_night_entries_on_journal_id"
+
+  create_table "nutrition_infos", force: :cascade do |t|
+    t.integer  "supplement_id"
+    t.integer  "nutrition_item_id"
+    t.float    "value"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
+  add_index "nutrition_infos", ["nutrition_item_id"], name: "index_nutrition_infos_on_nutrition_item_id"
+  add_index "nutrition_infos", ["supplement_id"], name: "index_nutrition_infos_on_supplement_id"
+
+  create_table "nutrition_items", force: :cascade do |t|
+    t.string   "name"
+    t.string   "unit_of_measure"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
 
   create_table "posts", force: :cascade do |t|
     t.string   "title"

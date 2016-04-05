@@ -1,10 +1,14 @@
 Rails.application.routes.draw do
 
+  resources :nutrition_items
+
   get 'supplement_usages/new'
   get 'supplement_usages/create'
 
   resources :supplements do
     get 'add_stack', to: 'users#add_supplement_to_stack'
+    get 'nutrition', to: 'supplements#nutrition'
+    post 'nutrition', to: 'supplements#create_nutrition'
   end
   resources :supplement_sub_categories
   resources :supplement_categories

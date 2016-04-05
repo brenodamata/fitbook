@@ -1,11 +1,13 @@
 class SupplementsController < ApplicationController
-  before_action :set_supplement, only: [:show, :edit, :update, :destroy]
+  # before_action :set_supplement, only: [:show, :edit, :update, :destroy]
+  before_action :set_supplement, except: [:index, :new, :create]
 
   def index
     @supplements = Supplement.all
   end
 
   def show
+    @nutrition_infos = @supplement.nutrition_infos
   end
 
   def new
@@ -49,9 +51,25 @@ class SupplementsController < ApplicationController
     end
   end
 
+  def nutrition
+    @nutrition_items = NutritionItem.all
+    @nutrition_info = NutritionInfo.new
+  end
+
+  def create_nutrition
+    params[:nutrition].each do |ni, value|
+      NutritionInfo.create(supplement: @supplement, nutrition_item: NutritionItem.find_by_name(ni), value: value) unless value.empty?
+    end
+    redirect_to supplement_path(@supplement)
+  end
+
   private
     def set_supplement
-      @supplement = Supplement.find(params[:id])
+      if params[:supplement_id]
+        @supplement = Supplement.find(params[:supplement_id])
+      else
+        @supplement = Supplement.find(params[:id])
+      end
     end
 
     def supplement_params

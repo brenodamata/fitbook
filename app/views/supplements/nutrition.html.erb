@@ -1,0 +1,21 @@
+<div class="page-header">
+  <h3><%= "#{@supplement.brand}'s #{@supplement.name}" %></h3>
+  <h4>Nutritional Info</h4>
+</div>
+
+<%= form_for "nutrition" do |f| %>
+  <% @nutrition_items.each do |ni| %>
+    <div class="form-group">
+      <%= f.label ni.name, :class => 'control-label' %>
+      <%= f.number_field :"#{ni.name}" %> <%= ni.unit_of_measure%>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                supplement_path(@supplement), :class => 'btn btn-default' %>
+    </div>
+  </div>
+<% end %>

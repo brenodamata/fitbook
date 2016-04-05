@@ -1,0 +1,16 @@
+<%= form_for @nutrition_item do |f| %>
+  <div class="form-group">
+    <%= f.label :name, :class => 'control-label' %>
+    <%= f.text_field :name, :class => 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :unit_of_measure, :class => 'control-label' %>
+    <%= f.text_field :unit_of_measure, :class => 'form-control' %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                nutrition_items_path, :class => 'btn' %>
+  </div>
+<% end %>
