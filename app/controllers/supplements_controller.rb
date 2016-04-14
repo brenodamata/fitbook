@@ -56,6 +56,8 @@ class SupplementsController < ApplicationController
     @nutrition_info = NutritionInfo.new
   end
 
+  # TODO: UPDATE nutrition - validate only one nutrition item per sup.
+
   def create_nutrition
     params[:nutrition].each do |ni, value|
       NutritionInfo.create(supplement: @supplement, nutrition_item: NutritionItem.find_by_name(ni), value: value) unless value.empty?
